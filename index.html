@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>THE STF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#1f4fd8;--deep:#0b1f6b;--ink:#111;--yellow:#ffd43b;--paper:#fff}
+*{box-sizing:border-box;margin:0}
+body{font-family:'Fredoka',system-ui,sans-serif;color:var(--ink);background:var(--paper);
+ background-image:radial-gradient(#d6def7 1.5px,transparent 1.5px);background-size:18px 18px;min-height:100vh}
+.title{font-family:'Bangers','Impact',sans-serif;letter-spacing:2px;color:var(--blue);
+ -webkit-text-stroke:3px var(--ink);paint-order:stroke fill;text-shadow:5px 5px 0 var(--ink)}
+header{text-align:center;padding:48px 16px 24px;position:relative;overflow:hidden}
+header img{max-width:min(420px,85%);height:auto}
+.logo-text{line-height:.9}
+.logo-text .the{font-size:clamp(56px,14vw,100px);display:block}
+.logo-text .stf{font-size:clamp(100px,30vw,220px);display:block}
+.star{position:absolute;color:var(--yellow);font-size:38px;text-shadow:2px 2px 0 var(--ink);-webkit-text-stroke:1px var(--ink)}
+.s1{top:70px;left:8%}.s2{top:160px;right:10%}.s3{top:300px;left:15%;font-size:28px}
+.badge{display:inline-block;margin-bottom:14px;background:var(--ink);color:var(--yellow);
+ font-family:'Bangers',Impact,sans-serif;letter-spacing:4px;font-size:22px;padding:3px 20px;
+ border-radius:8px;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--blue);transform:rotate(2deg)}
+.fullname{margin-top:18px;display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;
+ font-family:'Bangers',Impact,sans-serif;letter-spacing:2px;font-size:clamp(26px,7vw,44px)}
+.fullname span{background:var(--blue);color:#fff;border:3px solid var(--ink);padding:0 16px;border-radius:8px;
+ box-shadow:4px 4px 0 var(--ink);transform:rotate(-1.5deg)}
+.fullname span:last-child{transform:rotate(1.5deg)}
+.fullname i{font-style:normal;color:var(--ink);font-size:.7em;background:var(--yellow);border:3px solid var(--ink);
+ border-radius:50%;padding:2px 12px}
+.tag{display:inline-block;margin-top:22px;background:var(--yellow);border:3px solid var(--ink);
+ padding:4px 18px;font-weight:600;transform:rotate(-2deg);box-shadow:4px 4px 0 var(--ink)}
+main{max-width:1000px;margin:0 auto;padding:24px 16px 60px}
+h2{font-size:clamp(36px,8vw,56px);text-align:center;margin:20px 0 32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:34px 26px}
+.card{background:#fff;border:4px solid var(--ink);border-radius:18px;box-shadow:8px 8px 0 var(--blue);
+ padding:14px 14px 20px;text-align:center;transition:transform .15s}
+.card:nth-child(odd){transform:rotate(-1.2deg)}.card:nth-child(even){transform:rotate(1.2deg)}
+.card:hover{transform:rotate(0) translateY(-6px)}
+.photo{aspect-ratio:1/1;border:3px solid var(--ink);border-radius:12px;overflow:hidden;
+ background:repeating-linear-gradient(45deg,#e8eefc,#e8eefc 10px,#d6def7 10px,#d6def7 20px);
+ display:flex;align-items:center;justify-content:center;font-size:56px;color:var(--blue)}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.role{display:inline-block;margin:-18px auto 0;position:relative;background:var(--blue);color:#fff;
+ font-family:'Bangers',Impact,sans-serif;letter-spacing:1.5px;font-size:20px;padding:2px 14px;
+ border:3px solid var(--ink);border-radius:8px;transform:rotate(-2deg)}
+.name{font-family:'Bangers',Impact,sans-serif;font-size:30px;letter-spacing:1px;margin-top:10px;color:var(--deep)}
+.ig{display:inline-block;margin-top:6px;padding:5px 16px;background:var(--yellow);border:3px solid var(--ink);
+ border-radius:999px;color:var(--ink);text-decoration:none;font-weight:600;box-shadow:3px 3px 0 var(--ink);transition:.1s}
+.ig:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink);background:#fff}
+footer{text-align:center;padding:24px;background:var(--blue);color:#fff;border-top:5px solid var(--ink);font-weight:600}
+</style>
+</head>
+<body>
+<header>
+  <span class="star s1">✱</span><span class="star s2">✱</span><span class="star s3">✱</span>
+  <span class="badge">STF BAND</span>
+  <div id="logo"></div>
+  <div class="fullname"><span>Stranger</span><i>To</i><span>Family</span></div>
+  <span class="tag">Meet the crew!</span>
+</header>
+
+<main>
+  <h2 class="title">PERSONIL</h2>
+  <div class="grid" id="members"></div>
+</main>
+
+<footer>© <span id="yr"></span> THE STF — All rights reserved</footer>
+
+<script>
+/* ====== EDIT DI SINI ======
+   photo    : link foto (kosongkan "" jika belum ada)
+   name     : nama personil
+   instagram: username IG tanpa @
+   logoUrl  : link gambar logo (kosongkan untuk pakai tulisan bawaan) */
+const logoUrl = "";
+
+const members = [
+  { role: "Vokalis 1",  name: "Nama Vokalis 1",  instagram: "username_ig", photo: "" },
+  { role: "Vokalis 2",  name: "Anna",  instagram: "_.iskaaaaaaa", photo: "https://i.postimg.cc/QxYHydbj/IMG-20261122-WA0200.jpg" },
+  { role: "Gitaris 1",  name: "Nama Gitaris 1",  instagram: "username_ig", photo: "" },
+  { role: "Gitaris 2",  name: "Raka",  instagram: "raka000012", photo: "https://i.postimg.cc/mrfZvz1j/IMG-20261122-WA0199.jpg" },
+  { role: "Bassist",     name: "Nama Bassis",     instagram: "username_ig", photo: "" },
+  { role: "Drummer",    name: "Nama Drummer",    instagram: "username_ig", photo: "" }
+];
+/* ========================== */
+
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+document.getElementById('logo').innerHTML = logoUrl
+  ? `<img src="${esc(logoUrl)}" alt="THE STF">`
+  : `<div class="logo-text title"><span class="the">THE</span><span class="stf">STF</span></div>`;
+
+document.getElementById('members').innerHTML = members.map(m => {
+  const ig = m.instagram.replace(/^@/, '').trim();
+  const photo = m.photo
+    ? `<img src="${esc(m.photo)}" alt="${esc(m.name)}" loading="lazy" onerror="this.parentNode.textContent='🎤'">`
+    : '🎤';
+  return `<article class="card">
+    <div class="photo">${photo}</div>
+    <span class="role">${esc(m.role)}</span>
+    <div class="name">${esc(m.name)}</div>
+    <a class="ig" href="https://instagram.com/${encodeURIComponent(ig)}" target="_blank" rel="noopener">@${esc(ig)}</a>
+  </article>`;
+}).join('');
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
